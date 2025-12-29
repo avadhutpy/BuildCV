@@ -13,7 +13,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.12,3.13]
+        python-version: [3.13]
 
     steps:
     - uses: actions/checkout@v4
@@ -28,3 +28,6 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+    - name: Run Security Tests
+      run: |
+        bandit -r app

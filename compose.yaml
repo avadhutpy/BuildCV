@@ -1,0 +1,42 @@
+name: ${COMPOSE_NAME}
+services:
+  django:
+    build: .
+    container_name: ${APP_NAME}
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 512M
+        reservations:
+          cpus: '1'
+          memory: 256M
+    restart: unless-stopped
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8000/ || exit 1"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+      start_interval: 5s
+
+    command: >
+      bash -c "
+        set -e;
+        if [ ! -f manage.py ]; then
+          echo 'No Django project found. Creating one...';
+          django-admin startproject core .;
+        fi;
+        python manage.py makemigrations --noinput || true;
+        python manage.py migrate --noinput || true;
+        # start Django as PID 1
+        exec python manage.py runserver 0.0.0.0:8000
+      "
