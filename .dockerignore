@@ -1,0 +1,62 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env
+# Django collected static files
+staticfiles/
+static/
+media/
+
+# Local environment/config
+.env
+*.env
+env.json
+settings_local.py
+
+# Logs
+*.log
+logs/
+log/
+
+# SQLite (if dev)
+db.sqlite3
+
+# Bytecode & cache
+*.egg-info/
+*.egg
+.eggs/
+*.cache/
+.cache/
+pip-wheel-metadata/
+wheels/
+
+# IDE/editor junk
+.vscode/
+.idea/
+*.swp
+
+# Docker / Build
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Tests (optional — include only if you don't need tests in the image)
+tests/
+.coverage
+htmlcov/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Node stuff (if using webpack, tailwind, etc.)
+node_modules/
+dist/
+build/
