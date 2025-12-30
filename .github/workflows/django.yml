@@ -29,10 +29,10 @@ jobs:
         run: docker compose build
 
       - name: Run migrations
-        run: docker compose run --rm web python manage.py migrate
+        run: docker compose run --rm django python manage.py migrate
 
       - name: Run tests
-        run: docker compose run --rm web python manage.py test
+        run: docker compose run --rm django python manage.py test
 
       - name: Django system check
-        run: docker compose run --rm web python manage.py check
+        run: docker compose run --rm django python manage.py check
