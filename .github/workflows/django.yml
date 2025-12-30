@@ -18,8 +18,7 @@ jobs:
       matrix:
         python-version: [3.13]
 
-    env:
-      CI: true
+
 
     steps:
       - name: Checkout repository
