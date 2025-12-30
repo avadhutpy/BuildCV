@@ -26,13 +26,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t buildcv .
+        run: docker compose build
 
       - name: Run migrations
-        run: docker run --rm buildcv python manage.py migrate
+        run: docker compose run --rm web python manage.py migrate
 
       - name: Run tests
-        run: docker run --rm buildcv python manage.py test
+        run: docker compose run --rm web python manage.py test
 
       - name: Django system check
-        run: docker run --rm buildcv python manage.py check
+        run: docker compose run --rm web python manage.py check
