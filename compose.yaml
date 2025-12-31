@@ -1,8 +1,8 @@
-name: ${COMPOSE_NAME:-buildcv}
+name: ${COMPOSE_NAME-buildcv}
 services:
   django:
     build: .
-    container_name: ${APP_NAME:-buildcv}
+    container_name: ${APP_NAME-buildcv}
     env_file:
       - .env
     deploy:
