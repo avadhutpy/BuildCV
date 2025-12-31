@@ -3,8 +3,6 @@ services:
   django:
     build: .
     container_name: ${APP_NAME-buildcv}
-    env_file:
-      - .env
     deploy:
       resources:
         limits:
